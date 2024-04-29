@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../SiteKarpo/style-simulador-financeiro.css">
+    <link rel="shortcut icon" href="../SiteKarpo/assets/logo-contato.png" type="image/x-icon">
+    <title>Karpos</title>
+</head>
+
+<body>
+    <header>
+        <a href="../SiteKarpo/index.html">
+            <div id="logo-karpos"><img src="../SiteKarpo/assets/Logo.png" alt="logo"></div>
+        </a>
+        <ul>
+            <a href="../SiteKarpo/index.html">
+                <li>Início</li>
+            </a>
+            <a href="../SiteKarpo/sobre-nos.html">
+                <li>Sobre Nós</li>
+            </a>
+            <a href="../SiteKarpo/serviços.html">
+                <li>Serviços</li>
+            </a>
+            <a href="../SiteKarpo/simulador-financeiro.html">
+                <li>Simulador Financeiro</li>
+            </a>
+            <a href="../SiteKarpo/contato.html">
+                <li>Contato</li>
+            </a>
+        </ul>
+        <a href="https://linktr.ee/karpostech" target="_blank">
+            <div id="social-medias"><img src="../SiteKarpo/assets/Socials.png" alt=""></div>
+        </a>
+    </header>
+
+    <!-- Página de Contato -->
+    <!-- Página de Contato -->
+    <!-- Página de Contato -->
+    <div class="pagina-contato">
+        <h1 class="titulo">Bem Vindo</h1>
+        <h2 class="subtitulo">Preencha o formulário abaixo e faremos um orçamento para a sua empresa</h2>
+        <div class="conteudo-contato">
+            <div class="container">
+                <div class="esquerda">
+                    <!-- Div com a nossa logo de contato -->
+                    <div class="logo-contato">
+                        <img src="../SiteKarpo/assets/logo-contato.png" alt="Logo de Contato">
+                    </div>
+
+
+                </div>
+                <div class="direita">
+                    <!-- Campo Nome da Empresa -->
+                    <div class="input-container">
+                        <label for="nome-empresa">Nome da Empresa</label>
+                        <input type="text" id="nome_empresa" placeholder="Digite o nome da sua empresa" class="input">
+                    </div>
+                    <!-- Campo Email -->
+                    <div class="input-container">
+                        <label for="faturamento">Faturamento mensal da empresa</label>
+                        <input type="text" id="faturamento_input" placeholder="Digite o seu faturamento" class="input">
+                    </div>
+                    <!-- Campo Assunto -->
+                    <div class="input-container">
+                        <label for="perdas">Quantidade de perdas estimadas por mes</label>
+                        <input type="text" id="quantidade_perdas_input" placeholder="Digite as perdas estimadas"
+                            class="input">
+                    </div>
+                    <button class="botaoSimular" onclick="calcular()">Simular</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="resultadoSimulacao">
+        <div class="conteudoSimulacao">
+            <h2>Simulação Pronta!</h2>
+            <p id="nomeempresa" class="empresaNome"> Conteúdo do titulo </p>
+            <div class="cartoes">
+                <div class="cartao">
+                    <h2>Título do Cartão 1</h2>
+                    <p>Conteúdo do Cartão 1</p>
+                </div>
+                <div class="cartao">
+                    <h2>Título do Cartão 2</h2>
+                    <p>Conteúdo do Cartão 2</p>
+                </div>
+                <div class="cartao">
+                    <h2>Título do Cartão 3</h2>
+                    <p>Conteúdo do Cartão 3</p>
+                </div>
+            </div>
+
+            <button onclick="limpar()" class="fecharSimulacao">Voltar</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function limpar() {
+        quantidade_perdas_input.value = ""
+        faturamento_input.value = ""
+        nome_empresa.value = ""
+    }
+
+    function calcular() {
+
+
+        const faturamentoAnual = Number(faturamento_input.value)
+        const qtdPerda = Number(quantidade_perdas_input.value)
+        let valorLiquido = faturamentoAnual - qtdPerda
+        let aumentoLiquido = valorLiquido * 1.75
+        let aumentoLiquidoAnual = aumentoLiquido * 12
+        let qtdPerdaAnual = qtdPerda * 12
+        let valorLiquidoAnual = valorLiquido * 12
+
+
+        //formatando as variáveis de números
+        let formatFaturamentoAnual = faturamentoAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formatqtdPerda = qtdPerda.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formatvalorLiquido = valorLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formataumentoLiquido = aumentoLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formatvalorLiquidoAnual = valorLiquidoAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formatqtdPerdaAnual = qtdPerdaAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        let formataumentoLiquidoAnual = aumentoLiquidoAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+       
+
+        const botaoSimular = document.querySelector('.botaoSimular');
+        const resultadoSimulacao = document.querySelector('#resultadoSimulacao');
+
+        botaoSimular.addEventListener('click', () => {
+            resultadoSimulacao.classList.add('ativa');
+        });
+
+        const botaoFechar = document.querySelector('.fecharSimulacao');
+
+        botaoFechar.addEventListener('click', () => {
+            resultadoSimulacao.classList.remove('ativa');
+        });
+
+        const cartaoPossibilidade = document.querySelector('.cartao:nth-child(1)');
+        const cartaoPerda = document.querySelector('.cartao:nth-child(2)');
+        const cartaoOportunidade = document.querySelector('.cartao:nth-child(3)');
+        const nomeEmpresaa = document.querySelector('.empresaNome');
+
+        // nomeEmpresaa.querySelector('p').textContent = `Olá ${nomeEmpresa} aqui está a sua simulação de perdas e o quanto você pode lucrar com a nossa solução`
+        nomeempresa.innerHTML = `Olá ${nome_empresa.value} aqui está a sua simulação de perdas e o quanto você pode lucrar com a nossa solução <p>A análise que fizemos sobre os seus resultados revelou alguns insights cruciais: Devido a <span class="italico">falta de monitoramento de temperatura e umidade</span>, o fungo pode estar comprometendo o seu faturamento anual e a qualidade do seu produto<p/>
+            <p>De acordo com uma pesquisa feita pela  <a href="https://www.infoteca.cnptia.embrapa.br/infoteca/bitstream/doc/1112910/1/BOL100ManchaRamularia.pdf" target="blank">Embrapa</a>, uma plantação de algodão pode ser prejudicada <span class="destaque">em até 75%</span> devido a presença do fungo Mancha de Ramulária (o principal fungo das plantações de algodão).</p>                                                         `
+
+        cartaoPossibilidade.querySelector('h2').textContent = 'Possibilidade de Lucro Atual';
+        cartaoPossibilidade.querySelector('p').textContent = `Anual: ${formatvalorLiquidoAnual} \nMensal: ${formatvalorLiquido}`;
+
+        cartaoPerda.querySelector('h2').textContent = 'Perda por Fungo';
+        cartaoPerda.querySelector('p').textContent = `Anual: ${formatqtdPerdaAnual}`;
+
+        cartaoOportunidade.querySelector('h2').textContent = 'Oportunidade';
+        cartaoOportunidade.querySelector('p').textContent = `Faturamento Anual: ${formataumentoLiquidoAnual} \nFaturamento Mensal: ${formataumentoLiquido}`;
+    }
+</script>

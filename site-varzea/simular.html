@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../SiteKarpo/style-simulador-financeiro.css">
+    <link rel="shortcut icon" href="../SiteKarpo/assets/logo-contato.png" type="image/x-icon">
+    <title>Karpos</title>
+    <style>
+        .conteudo-contato.move-to-left {
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        #resultadoSimulacao {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            transition: right 0.5s ease;
+        }
+
+        #resultadoSimulacao.ativa {
+            right: 0;
+            display: block;
+        }
+
+        .conteudoSimulacao {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10%;
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fecharSimulacao {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../SiteKarpo/index.html">
+            <div id="logo-karpos"><img src="../SiteKarpo/assets/Logo.png" alt="logo"></div>
+        </a>
+        <ul>
+            <a href="../SiteKarpo/index.html">
+                <li>Início</li>
+            </a>
+            <a href="../SiteKarpo/sobre-nos.html">
+                <li>Sobre Nós</li>
+            </a>
+            <a href="../SiteKarpo/serviços.html">
+                <li>Serviços</li>
+            </a>
+            <a href="../SiteKarpo/simulador-financeiro.html">
+                <li>Simulador Financeiro</li>
+            </a>
+            <a href="../SiteKarpo/contato.html">
+                <li>Contato</li>
+            </a>
+        </ul>
+        <a href="https://linktr.ee/karpostech" target="_blank">
+            <div id="social-medias"><img src="../SiteKarpo/assets/Socials.png" alt=""></div>
+        </a>
+    </header>
+
+    <!-- Página de Contato -->
+    <div class="pagina-contato">
+        <h1 class="titulo">Bem Vindo</h1>
+        <h2 class="subtitulo">Preencha o formulário abaixo e faremos um orçamento para a sua empresa</h2>
+        <div class="conteudo-contato">
+            <div class="container">
+                <div class="esquerda">
+                    <!-- Div com a nossa logo de contato -->
+                    <div class="logo-contato">
+                        <img src="../SiteKarpo/assets/logo-contato.png" alt="Logo de Contato">
+                    </div>
+                </div>
+                <div class="direita">
+                    <!-- Campo Nome da Empresa -->
+                    <div class="input-container">
+                        <label for="nome-empresa">Nome da Empresa</label>
+                        <input type="text" id="nome_empresa" placeholder="Digite o nome da sua empresa" class="input">
+                    </div>
+                    <!-- Campo Email -->
+                    <div class="input-container">
+                        <label for="faturamento">Faturamento anual da empresa</label>
+                        <input type="text" id="faturamento_input" placeholder="Digite o seu faturamento" class="input">
+                    </div>
+                    <!-- Campo Assunto -->
+                    <div class="input-container">
+                        <label for="perdas">Quantidade de perdas estimadas por ano</label>
+                        <input type="text" id="quantidade_perdas_input" placeholder="Digite as perdas estimadas"
+                            class="input">
+                    </div>
+                    <button class="botaoSimular">Simular</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultadoSimulacao">
+        <div class="conteudoSimulacao">
+            <h2>Simulação Pronta!</h2>
+            <p class="empresaNome"> Olá aqui está a sua simulação de perdas e o quanto você pode lucrar com a nossa solução</p>
+            <div class="cartoes">
+                <div class="cartao">
+                    <h2>Título do Cartão 1</h2>
+                    <p>Conteúdo do Cartão 1</p>
+                </div>
+                <div class="cartao">
+                    <h2>Título do Cartão 2</h2>
+                    <p>Conteúdo do Cartão 2</p>
+                </div>
+                <div class="cartao">
+                    <h2>Título do Cartão 3</h2>
+                    <p>Conteúdo do Cartão 3</p>
+                </div>
+            </div>
+
+            <button class="fecharSimulacao">Voltar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botaoSimular = document.querySelector('.botaoSimular');
+            const resultadoSimulacao = document.querySelector('#resultadoSimulacao');
+
+            botaoSimular.addEventListener('click', () => {
+                // Adicionando classe para mover a div da direita para a esquerda
+                document.querySelector('.conteudo-contato').classList.add('move-to-left');
+                // Adicionando classe para mostrar a div de resultado
+                resultadoSimulacao.classList.add('ativa');
+            });
+
+            const botaoFechar = document.querySelector('.fecharSimulacao');
+
+            botaoFechar.addEventListener('click', () => {
+                // Removendo classe para voltar a div para a posição original
+                document.querySelector('.conteudo-contato').classList.remove('move-to-left');
+                // Removendo classe para esconder a div de resultado
+                resultadoSimulacao.classList.remove('ativa');
+            });
+
+            function calcular() {
+                let nomeEmpresa = nome_empresa.value
+                let faturamentoAnual = Number(faturamento_input.value)
+                let perdaFungoAnual = faturamentoAnual * 0.75
+                let perdaFungoMensal = perdaFungoAnual / 12
+                let faturamentoAnualPossivel = faturamentoAnual + perdaFungoAnual
+                let faturamentoMensalPossivel = faturamentoAnualPossivel / 12
+
+                //formatando as variáveis de números
+                let formatFaturamentoAnual = faturamentoAnual.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+                let formatPerdaFungoAnual = perdaFungoAnual.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+                let formatPerdaFungoMensal = perdaFungoMensal.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+                let formatFaturamentoAnualPossivel = faturamentoAnualPossivel.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+                let formatFaturamentoMensalPossivel = faturamentoMensalPossivel.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                })
+
+                const cartaoPossibilidade = document.querySelector('.cartao:nth-child(1)');
+                const cartaoPerda = document.querySelector('.cartao:nth-child(2)');
+                const cartaoOportunidade = document.querySelector('.cartao:nth-child(3)');
+                const nomeEmpresaa = document.querySelector('.empresaNome');
+
+                nomeEmpresaa.textContent = `Olá ${nomeEmpresa} aqui está a sua simulação de perdas e o quanto você pode lucrar com a nossa solução`;
+
+                cartaoPossibilidade.querySelector('h2').textContent = 'Possibilidade de Perda';
+                cartaoPossibilidade.querySelector('p').textContent = `Anual: ${formatPerdaFungoAnual} \nMensal: ${formatPerdaFungoMensal}`;
+
+                cartaoPerda.querySelector('h2').textContent = 'Perda por Fungo';
+                cartaoPerda.querySelector('p').textContent = `Anual: ${formatPerdaFungoAnual}`;
+
+                cartaoOportunidade.querySelector('h2').textContent = 'Oportunidade';
+                cartaoOportunidade.querySelector('p').textContent = `Faturamento Anual: ${formatFaturamentoAnualPossivel} \nFaturamento Mensal: ${formatFaturamentoMensalPossivel}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
