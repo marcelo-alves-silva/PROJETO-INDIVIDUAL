@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0 5%;
-    background-image: url(../SiteVarzea/assets/fundo-varzea.png);
+    background-image: url(../assets/fundo-varzea.png);
     box-shadow: #000000;
     background-repeat: no-repeat;
     background-color: #000000;
@@ -48,11 +48,12 @@ ul a {
 /* Estilos para o texto central */
 #texto-central {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 400px;
     /* Espaçamento do topo */
 }
 
 .texto-grande {
+  margin-top: -210px;
     font-size: 72px;
     font-weight: 500;
     /* Médio */

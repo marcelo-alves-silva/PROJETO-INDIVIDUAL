@@ -4,7 +4,7 @@
 body {
     margin: 0;
     padding: 0 5%;
-    background-image: url(../SiteVarzea/assets/fundo-varzea.png);
+    background-image: url(../assets/fundo-varzea.png);
     background-repeat: no-repeat;
     background-color: #000000;
     background-size: cover;
@@ -13,7 +13,7 @@ body {
     /* Aplicando a fonte Inter */
 }
 
-header {
+header {    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -122,4 +122,4 @@ ul a {
   .tooltip-container:hover {
     transform: scale(0.9);
   }
-  
+  /*css do texto*/

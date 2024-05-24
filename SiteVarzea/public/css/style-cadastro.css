@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0 5%;
-  background-image: url(../SiteVarzea/assets/fundo-varzea.png);
+  background-image: url(../assets/fundo-varzea.png);
   box-shadow: #000000;
   background-repeat: no-repeat;
   background-color: #000000;
@@ -23,7 +23,7 @@ header {
 }
 #logo img {
     opacity: 0,5;
-    margin-left: -271px;
+    margin-left: -280px;
     /* Espaçamento da esquerda */
 }
 .pagina-contato{
@@ -103,7 +103,7 @@ ul a {
     max-width: 550px;
     padding: 30px;
     border-radius: 50px;
-    position: relative;
+    position: fixed;
     background-color: #e95;
     color: #fff;
     border: 1px solid #333;
@@ -144,10 +144,10 @@ ul a {
   
   .message, 
   .signin {
-    font-size: 14.5px;
+    font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
   }
-  
+    
   .signin {
     text-align: center;
   }
@@ -173,7 +173,7 @@ ul a {
   .form label .input {
     background-color: #ffffff;
     color: #000000;
-    width: 100%;
+    width: 96%;
     padding: 20px 05px 05px 10px;
     outline: 0;
     border: 1px solid #e95e02;
@@ -233,3 +233,29 @@ ul a {
       opacity: 0;
     }
   }
+
+/* .alerta_erro{
+  width: 300px;
+  height: 200px;
+  background-color: #e95e02;
+  margin-left: 1000px;
+  border-radius: 10px;
+  border: 2px solid black;
+} */
+
+.card_erro{
+  display: none;
+  width: 200px;
+  height: 200px;
+  color: #ffffff;
+  background-color: #e95;
+  margin-left: 1000px;
+  border-radius: 40px;
+  border: 1px solid black;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+}
+

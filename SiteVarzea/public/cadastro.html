@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style-cadastro.css">
+    <title>Mundo da Varzea</title>
+</head>
+
+<body>
+    <header>
+        <a href="./index.html"><div id="logo"><img src="./assets/logo.png" style="height: 150px;" class="logo-varzea"></a>
+        </div>
+            <ul>
+                <a href="./index.html">
+                <div class="tooltip-container">
+                <span class="text"><b><li>Início</li></b></span>
+            </div>
+                </a>
+
+                <a href="./sobre-nos.html">
+                <div class="tooltip-container">
+                    <span class="text"><b><li>Sobre Nós</li></b></span>
+                </div>
+                </a>
+
+                <a href="./quiz.html">
+                <div class="tooltip-container">
+                    <span class="text"><b><li>quiz</li></b></span>
+                    </div>
+                    </a>
+
+                <a href="./cadastro.html">
+                    <div class="tooltip-container">
+                        <span class="text"><b><li>Cadastro</li></b></span>
+                        </div>
+                        </a>
+
+                <a href="./login.html">
+                    <div class="tooltip-container">
+                    <span class="text"><b><li>Login</li></b></span>
+                    </div>
+                    </a>
+            </ul>
+        </div>
+</a>
+    </header>
+
+
+    <div class="pagina-contato">
+      
+      <div class="form">
+        <p class="title">Registro </p>
+        <p class="message">tenha acesso total ao nosso site </p>
+            <div class="flex">
+            <label>
+                <input  id="input_nome"  class="input" type="text" placeholder="" required=""style="width: 92%;">
+                <span>Nome</span>
+            </label>
+    
+            <label>
+                <input id="input_Estado" class="input" type="text" placeholder="" required=""style="width: 92%;">
+                <span>Estado</span>
+            </label>
+        </div>  
+                
+        <label>
+            <input id="input_email" class="input" type="email" placeholder="" required="">
+            <span>Email</span>
+        </label> 
+            
+        <label>
+            <input id="input_senha"  class="input" type="password" placeholder="" required="">
+            <span>Senha</span>
+        </label>
+        <label>
+            <input id="confirmacao_senha_input"  class="input" type="password" placeholder="" required="">
+            <span>Confirmar Senha</span>
+        </label>
+        <button onclick="cadastrar()" class="submit">cadastrar</button>
+        
+
+        <p class="signin">Ja possui uma conta? <a href="./login.html">login</a> </p>
+      </div>
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div></div>
+  
+
+</body>
+
+</html>
+<script>
+
+    function cadastrar(){
+        let NomeUSu= input_nome.value
+        let estadousu= input_Estado.value
+        let emailusu= input_email.value
+        let senhausu= input_senha.value
+        let confirmarsenha= confirmacao_senha_input.value
+
+        if(NomeUSu=="" ||
+          estadousu==""||
+          emailusu==""||
+          senhausu=="" ||
+          confirmarsenha== ""
+        ){
+          cardErro.style.display = "flex";
+      mensagem_erro.innerHTML =
+        "(Todos os campos devem estar preenchido)";
+      return false;
+
+        }else if(emailusu.indexOf("@")== -1){
+          cardErro.style.display = "flex";
+      mensagem_erro.innerHTML =
+        "(O email deve conter @)";
+      return false;
+
+        }else if(emailusu.indexOf(".com")== -1){
+          cardErro.style.display = "flex";
+      mensagem_erro.innerHTML =
+        "(O email deve conter .com)";
+      return false;}
+      else if(senhausu.length < 6){
+        cardErro.style.display = "flex";
+      mensagem_erro.innerHTML =
+        "(A senha deve conter mais de 6 Digitos)";
+      }else if(confirmarsenha != senhausu){
+        cardErro.style.display = "flex";
+      mensagem_erro.innerHTML =
+        "(as senhas não coincidem)";
+      }
+      else {
+
+
+
+        fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: NomeUSu,
+        estadoServer:estadousu,
+        emailServer: emailusu,
+        senhaServer: senhausu,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+    }
+  }
+</script>

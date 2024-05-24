@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0 5%;
+    background-image: url(../assets/fundo-varzea.png);
+    box-shadow: #000000;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    background-color: rgba(10,23,55,0.5);
+    background-size: cover;
+    /* ou background-size: contain; dependendo da preferência */
+    font-family: 'Inter', sans-serif;
+    /* Aplicando a fonte Inter */
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 100px;
+    font-size: 20px;
+}
+
+#logo img {
+    opacity: 0,5;
+    margin-left: -280px;
+    /* Espaçamento da esquerda */
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul a {
+    text-decoration: none;
+    color: #000000;
+    /* Cor do texto do menu */
+    margin: 0 49px;
+    /* Espaçamento entre os itens do menu */
+}
+
+
+/* Estilos para o texto central */
+#texto-central {
+    text-align: center;
+    margin-top: 400px;
+    /* Espaçamento do topo */
+}
+
+.texto-grande {
+  margin-top: -210px;
+    font-size: 72px;
+    font-weight: 500;
+    /* Médio */
+    font-family: 'Montserrat', sans-serif;
+    /* Aplicando a fonte Montserrat */
+    color: #ffffff;
+    /* Cor do texto */
+    margin-bottom: 10px;
+    /* Adicionando espaço entre o texto grande e o texto pequeno */
+}
+
+.texto-pequeno {
+    font-size: 25px;
+    font-weight: normal;
+    /* Regular */
+    color: #000000;
+    /* Cor do texto */
+    margin-bottom: 10px;
+    /* Adicionando espaço entre o texto pequeno e o botão */
+}
+
+.botao-orcamento {
+    width: 326px;
+    height: 64px;
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    color: #e95e02;
+    /* Cor do texto */
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 64px;
+    /* Centraliza o texto verticalmente */
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0px 4px 8px rgba(255, 0, 0, 0.3);
+    /* Sombra */
+    cursor: pointer;
+    /* Altera o cursor ao passar por cima */
+    margin-bottom: 10px;
+    /* Adicionando espaço entre o botão e o texto pequeno */
+}
+/* css do botão */
+.btn-53,
+.btn-53 *,
+.btn-53 :after,
+.btn-53 :before,
+.btn-53:after,
+.btn-53:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-53 {
+  -webkit-tap-highlight-color: transparent;
+  background-color: #000;
+  background-image: none;
+  color: #e95e02;
+  border: 10px solid #000;
+  background-size: #e95e02;
+  box-shadow: #000000;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-53:disabled {
+  cursor: default;
+}
+
+.btn-53:-moz-focusring {
+  outline: auto;
+}
+
+.btn-53 svg {
+  display: block;
+}
+
+.btn-53 [hidden] {
+  display: none;
+}
+
+.btn-53 {
+  border: 1px solid;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  padding: 1.2rem 3rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-53 .original {
+  background: #e95;
+  color: #000000;
+  display: grid;
+  inset: 0;
+  place-content: center;
+  position: absolute;
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.btn-53:hover .original {
+  transform: translateY(100%);
+}
+
+.btn-53 .letters {
+  display: inline-flex;
+}
+
+.btn-53 span {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+}
+
+.btn-53 span:nth-child(2n) {
+  transform: translateY(15px);
+}
+
+.btn-53:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-53:hover span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.btn-53:hover span:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.btn-53:hover span:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.btn-53:hover span:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.btn-53:hover span:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/* css do menu */
+.tooltip-container {
+    --background: linear-gradient(45deg, #e95, #e95);
+    position: relative;
+    background: var(--background);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 17px;
+    padding: 0.7em 1.8em;
+    border-radius: 8px;
+    border: 1px solid #000;
+    box-shadow: 0 4px 6px #e95e02(0, 0, 0, 0.1);
+    color: #000000;
+  }
+  
+  .tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    transform-origin: bottom;
+    padding: 0.3em 0.6em;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    background: var(--background);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 0.6em;
+    width: 0.6em;
+    bottom: -0.2em;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    background: var(--background);
+  }
+  
+  .tooltip-container:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) scale(1);
+  }
+  .tooltip-container:hover {
+    transform: scale(0.9);
+  }
+  
+  

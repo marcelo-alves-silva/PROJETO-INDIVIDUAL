@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.primeira_parte{
+    height: 60vh;
+}
+body {
+  margin: 0;
+  padding: 0 5%;
+  background-image: url(../assets/fundoDash.jpg);
+  box-shadow: #000000;
+  background-repeat: no-repeat;
+  background-color: #000000;
+  background-size: cover;
+  /* ou background-size: contain; dependendo da preferência */
+  font-family: 'Inter', sans-serif;
+  /* Aplicando a fonte Inter */
+  overflow: hidden;
+
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 100px;
+  font-size: 20px;
+}
+
+#logo img {
+  opacity: 0,5;
+  margin-left: -650px;
+  /* Espaçamento da esquerda */
+}
+.pagina-contato{
+  display: flex;
+  justify-content: center;
+}
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul a {
+  text-decoration: none;
+  color: #000000;
+  /* Cor do texto do menu */
+  margin: 0 49px;
+  /* Espaçamento entre os itens do menu */
+}
+/* css do menu */
+.tooltip-container {
+  --background: linear-gradient(45deg, #e95, #e95);
+  position: relative;
+  background: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  padding: 0.7em 1.8em;
+  border-radius: 8px;
+  border: 2px solid #000;
+  box-shadow: 0 4px 6px #e95e02(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  transform-origin: bottom;
+  padding: 0.3em 0.6em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  background: var(--background);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  background: var(--background);
+}
+
+.tooltip-container:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+.tooltip-container:hover {
+  transform: scale(0.9);
+}
+/* css cadastro */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 50px;
+  position: relative;
+  background-color: #e95;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #e95e02;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #e95e02;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline #000000;
+}
+
+.signin a {
+  color: #e95e02;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 50px;
+  position: fixed;
+  background-color: #e95;
+  color: #fff;
+  border: 1px solid #333;
+}
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #ffffff;
+  color: #000000;
+  width: 94%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid #e95e02;
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: #e95e02;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #e95e02;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #e95e02;
+}
+
+.submit:hover {
+  background-color: #000000;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.card_erro{
+  display: none;
+  width: 200px;
+  height: 200px;
+  color: #ffffff;
+  background-color: #e95;
+  margin-left: 1000px;
+  border-radius: 40px;
+  border: 1px solid black;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+}
