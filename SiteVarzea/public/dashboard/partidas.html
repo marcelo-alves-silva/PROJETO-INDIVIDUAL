@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partida de Futebol</title>
+    <link rel="stylesheet" href="../css/style-partidas.css">
+
+
+
+    <style>
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-size: 20px;
+        }
+
+        .custom-alert-content {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 6px solid #e95e02;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+
+
+</head>
+<body>
+   <h1> <a><button class="button"></link>Clique e vote no seu Favorito</button></a>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤPARTIDAS  <a href="./home.html"><button class="button"></link>SAIR</button></a>  VARZEA ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ ㅤㅤ     <a href="./grafico.html"><button class="button"></link> Favoritos da galera </button></a></h1>
+   <div class="paidospais">
+    <div class="container1">
+    <div class="match-info">
+        <div class="team">
+            <img id="team1-logo" class="team-logo" src="../assets/logo.png" alt="Mundo da Varzea" data-team="1">
+            <div id="team1-name"></div>
+        </div>
+        <div class="overlay">X</div> 
+        <div class="team">
+            <img id="team2-logo" class="team-logo" src="../assets/time3.png" alt="Brisas F.C" data-team="2">
+            <div id="team2-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time"></div>
+</div>
+<div class="container6">
+    <div class="match-info">
+        <div class="team">
+            <img id="team9-logo" class="team-logo" src="../assets/logo.png"data-team="1">
+            <div id="team9-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time6"></div>
+</div>
+</div>
+
+
+
+<div class="containerpai2">
+<div class="container2">
+    <div class="match-info">
+        <div class="team">
+            <img id="team3-logo" class="team-logo" src="../assets/time2.png" alt="Vila sao paulo" class="team-logo" data-team="3" >
+            <div id="team3-name"></div>
+        </div>
+        <div class="overlay">X</div> 
+        <div class="team">
+            <img id="team4-logo" class="team-logo" src="../assets/CYMERA_20160601_103758-removebg-preview.png" alt="Varzea F.C" data-team="4" >
+
+            <div id="team4-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time2"></div>
+</div>
+<div class="container5">
+    <div class="match-info">
+        <div class="team">
+            <img id="team8-logo" class="team-logo" src="../assets/time2.png" alt="Logo do Time 1"data-team="3">
+            <div id="team8-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time5"></div>
+</div>
+</div>
+
+<div class="containerpai">
+<div class="container3">
+    <div class="match-info">
+        <div class="team">
+            <img id="team5-logo" class="team-logo" src="../assets/SOAMIGOSALINE-removebg-preview.png" data-team="5">
+            <div id="team5-name"></div>
+        </div>
+        <div class="overlay">X</div> 
+        <div class="team">
+            <img id="team6-logo" class="team-logo" src="../assets/th-removebg-preview.png" alt="Logo do Time 2"data-team="6">
+
+            <div id="team6-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time3"></div>
+</div>
+<div class="container4">
+    <div class="match-info">
+        <div class="team">
+            <img id="team7-logo" class="team-logo" src="../assets/th-removebg-preview.png" alt="Logo do Time 2" data-team="7">
+
+            <div id="team7-name"></div>
+        </div>
+    </div>
+    <div class="time" id="match-time4"></div>
+</div>
+</div>
+
+<div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <span class="close-btn" onclick="closeAlert()">&times;</span>
+        <p id="alertMessage"></p>
+        <button class="button"onclick="closeAlert()">Acompanhar</button>
+    </div>
+</div>
+
+
+        <canvas id="votesChart" width="400" height="200" color="blue"></canvas>
+    </div>
+    <script src=votos.js></script>
+    <script>
+        // Configuração dos dados da partida
+        const matchTime = "15:00. 25/05/2024. São paulo";
+        const matchTime2 = "16:00. 26/05/2024. São paulo";
+        const matchTime3 = "13:00. 27/05/2024. São paulo";
+        const matchtime4 = "Maior vencedor deste confronto"
+        const matchtime5 = "Maior vencedor deste confronto"
+        const matchtime6 = "Maior vencedor deste confronto"
+        const team1 = {
+            name1: "Mundo da varzea",
+            logo: "../assets/logo.png" 
+        };
+        const team2 = {
+            name2: "Brisas F.C",
+            logo: "../assets/time3.png" 
+        };
+
+        const team3 = {
+            name3: "Vila São Paulo",
+            logo: "../assets/time2.png"
+        };
+        const team4 = {
+            name4: "Varzea F.C",
+            logo: "../assets/CYMERA_20160601_103758-removebg-preview.png" 
+        };
+        const team5 = {
+            name5: "Só amigos",
+            logo: "../assets/SOAMIGOSALINE-removebg-preview.png" 
+        };
+        const team6 = {
+            name6: "Fenomenautas",
+            logo: "../assets/th-removebg-preview.png" 
+        };
+        const team7 = {
+            name7: "Fenomenautas",
+            logo: "../assets/th-removebg-preview.png" 
+        };
+        const team8 = {
+            name8: "Vila São Paulo",
+            logo: "../assets/time2.png" 
+        };
+        const team9 = {
+            name9: "Mundo da varzea",
+            logo: "../assets/logo.png" 
+        };
+
+       // Função para atualizar a interface com os dados da partida
+function updateMatchInfo() {
+    // Atualiza o horário da partida
+    document.getElementById("match-time").innerText = `Horário da partida: ${matchTime}`;
+    document.getElementById("match-time2").innerText = `Horário da partida: ${matchTime2}`;
+    document.getElementById("match-time3").innerText = `Horário da partida: ${matchTime3}`;
+    document.getElementById("match-time4").innerText = ` ${matchtime4}`;
+    document.getElementById("match-time5").innerText = ` ${matchtime5}`;
+    document.getElementById("match-time6").innerText = ` ${matchtime6}`;
+    // Atualiza informações do Time 1
+    document.getElementById("team1-name").innerText = team1.name1;
+    document.getElementById("team1-logo").src = team1.logo;
+    // Atualiza informações do Time 2
+    document.getElementById("team2-name").innerText = team2.name2;
+    document.getElementById("team2-logo").src = team2.logo;
+    // Atualiza informações do Time 3
+    document.getElementById("team3-name").innerText = team3.name3;
+    document.getElementById("team3-logo").src = team3.logo; 
+    // Atualiza informações do Time 4
+    document.getElementById("team4-name").innerText = team4.name4;
+    document.getElementById("team4-logo").src = team4.logo; 
+    // Atualiza informações do Time 5
+    document.getElementById("team5-name").innerText = team5.name5;
+    document.getElementById("team5-logo").src = team5.logo; 
+    // Atualiza informações do Time 6
+    document.getElementById("team6-name").innerText = team6.name6;
+    document.getElementById("team6-logo").src = team6.logo; 
+    // Atualiza informações do Time 7
+    document.getElementById("team7-name").innerText = team7.name7;
+    document.getElementById("team7-logo").src = team7.logo; 
+    // Atualiza informações do Time 8
+    document.getElementById("team8-name").innerText = team8.name8;
+    document.getElementById("team8-logo").src = team8.logo; 
+    // Atualiza informações do Time 9
+    document.getElementById("team9-name").innerText = team9.name9;
+    document.getElementById("team9-logo").src = team9.logo; 
+}
+
+// Chama a função para atualizar as informações da partida após carregar a página
+window.onload = updateMatchInfo;
+
+// Funções de alerta personalizado
+function showAlert(message) {
+            const alertBox = document.getElementById('customAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+            alertBox.style.display = 'flex';
+        }
+
+        function closeAlert() {
+            const alertBox = document.getElementById('customAlert');
+            alertBox.style.display = 'none';
+        }
+
+
+
+    </script>
+</body>
+</html>

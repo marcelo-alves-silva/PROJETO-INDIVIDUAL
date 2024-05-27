@@ -4,7 +4,7 @@
 body {
     margin: 0;
     padding: 0 5%;
-    background-image: url(../assets/fundo-varzea.png);
+    background-image: url(../assets/fundo.caca.jpg);
     background-repeat: no-repeat;
     background-color: #000000;
     background-size: cover;
@@ -46,31 +46,52 @@ ul a {
     margin-right: auto;
     /* Espaçamento da direita */
 }
-
-.containerPai{
+.container {
     display: flex;
+    background-color: #e95;
+    color: #fff;
+    width: 1200px;
+    height: auto;
+    padding: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 30px;
+    margin: 40px auto;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    justify-content: space-evenly;
-    margin: auto;
+    margin-top: -20px;
+    margin-left: 1000;
 }
 
-#titulo{
-    /* font-family:"Speedee", arial, helvetica, sans-serif; */
-    justify-content: center;
+#titulo {
     font-size: 60px;
-    align-items: center;
-    color: aliceblue;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
 }
 
-.texto-sn {  
-    justify-content: center;
-    align-items: center;
+.subtitulo {
     font-size: 30px;
-    text-shadow: 0 20px 20px rgb(0, 0, 0);
-    color: aliceblue;
+    margin: 20px 0;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 1px 1px rgb(0, 0, 0);
 }
 
+.texto {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.texto-final {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    line-height: 1.6;
+}
 /* css do menu */
 .tooltip-container {
     --background: linear-gradient(45deg, #e95, #e95);
@@ -122,4 +143,4 @@ ul a {
   .tooltip-container:hover {
     transform: scale(0.9);
   }
-  /*css do texto*/
+  

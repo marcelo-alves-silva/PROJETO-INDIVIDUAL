@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0 5%;
-    background-image: url(../assets/fundo-varzea.png);
+    background-image: url(../assets/oficial.jpg);
     box-shadow: #000000;
     background-repeat: no-repeat;
     background-color: #000000;
@@ -53,13 +53,13 @@ ul a {
 }
 
 .texto-grande {
-  margin-top: -210px;
+  margin-top: -410px;
     font-size: 72px;
     font-weight: 500;
     /* Médio */
     font-family: 'Montserrat', sans-serif;
     /* Aplicando a fonte Montserrat */
-    color: #ffffff;
+    color: #000000;
     /* Cor do texto */
     margin-bottom: 10px;
     /* Adicionando espaço entre o texto grande e o texto pequeno */
