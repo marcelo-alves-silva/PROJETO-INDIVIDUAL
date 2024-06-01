@@ -97,8 +97,35 @@ function finishGame(){
     Refazer Quiz
     </button>
     `
+    salvarPontuacao()
 }
+function salvarPontuacao(){
+    const idUsuario= sessionStorage.ID_USUARIO
+    fetch("/quizRoutes/cadastrarPontuacao", {
+  method: "POST",
+  headers: {                
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    // crie um atributo que recebe o valor recuperado aqui
+    // Agora vá para o arquivo routes/usuario.js
+    idUsuarioServer: idUsuario,
+    qtdAcertosServer:totalcorrect,
+  }),
+})
+  .then(function (resposta) {
+    console.log("resposta: ", resposta);
 
+    if (resposta.ok) {
+     
+    } else {
+      throw "Houve um erro ao tentar realizar o cadastro!";
+    }
+  })
+  .catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
+}
 
 
 

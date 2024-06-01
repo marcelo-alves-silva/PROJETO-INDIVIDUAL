@@ -80,7 +80,13 @@
         <div class="card_erro" id="cardErro">
           <span id="mensagem_erro"></span>
         </div></div>
-  
+  <!-- Alerta personalizado -->
+<div id="customAlert" class="custom-alert">
+  <div class="custom-alert-content">
+    <span class="close-btn" onclick="closeAlert()">&times;</span>
+    <p>Usuário cadastrado com sucesso!</p>
+  </div>
+</div>
 
 </body>
 
@@ -126,38 +132,44 @@
         "(as senhas não coincidem)";
       }
       else {
+        function showAlert() {
+  document.getElementById("customAlert").style.display = "block";
+}
 
+function closeAlert() {
+  document.getElementById("customAlert").style.display = "none";
+}
 
+fetch("/usuarios/cadastrar", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    // crie um atributo que recebe o valor recuperado aqui
+    // Agora vá para o arquivo routes/usuario.js
+    nomeServer: NomeUSu,
+    estadoServer: estadousu,
+    emailServer: emailusu,
+    senhaServer: senhausu,
+  }),
+})
+  .then(function (resposta) {
+    console.log("resposta: ", resposta);
 
-        fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: NomeUSu,
-        estadoServer:estadousu,
-        emailServer: emailusu,
-        senhaServer: senhausu,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+    if (resposta.ok) {
+      showAlert(); // Exibe o alerta personalizado
+      setTimeout(() => {
+        window.location = "login.html";
+      }, 3000); // Espera 2 segundos antes de redirecionar
+    } else {
+      throw "Houve um erro ao tentar realizar o cadastro!";
     }
-  }
+  })
+  .catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
+}
+    }
+
 </script>

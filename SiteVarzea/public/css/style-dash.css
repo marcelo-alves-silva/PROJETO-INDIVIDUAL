@@ -34,15 +34,7 @@ body {
   margin-bottom: 20px;
 }
 
-.team-logo {
-  width: 100px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
 
-.team-logo:hover {
-  transform: scale(1.1);
-}
 
 canvas {
   margin-top: 20px;

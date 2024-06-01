@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maiores Pontuadores</title>
+  <link rel="stylesheet" href="../css/style-dashQuiz.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <h1><a href="./home.html"><button class="button"></link>Voltar para pagina inicial</button></a>ㅤㅤㅤDASHBOARDㅤㅤㅤㅤ<a href="./Quiz.html"><button class="button"></link> ir para Quiz</button></a></h1>
+</head>
+<body>
+  <div class="container">
+    <h2>Maiores Pontuadores-Quiz</h2>
+    <canvas id="myChart" width="800" height="200"></canvas>
+    
+  </div>
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Total de Acertos',
+          data: [],
+          backgroundColor: ['orange', 'blue', 'green', 'yellow','red','black'],
+          borderColor: 'white',
+          borderWidth: 3
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+                afterDatasetsDraw: function (chart) {
+                    const ctx = chart.ctx;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const model = bar;
+                            const yPos = model.y - 25;
+                            const xPos = model.x - 10;
+                            ctx.drawImage(images[index], xPos, yPos, 20, 20);  // Ajuste o tamanho da imagem conforme necessário
+                        });
+                    });
+                },
+                legend: {
+                    labels: {
+                        color: 'white',
+                        backgroundColor: ['black'],
+                        // Ajuste da fonte e cor dos nomes dos times
+                        font: {
+                            size: 20, // Tamanho da fonte
+                            weight: 'bold' // Peso da fonte
+                        },
+                        color: 'White' // Cor do texto
+                    }
+                }
+            }
+        }
+    });
+      
+    
+
+    async function fetchData() {
+      const response = await fetch('http://localhost:3333/pontuacao/top-scorers');
+      const data = await response.json();
+      const labels = data.map(item => item.nome);
+      const values = data.map(item => item.total_acertos);
+
+      myChart.data.labels = labels;
+      myChart.data.datasets[0].data = values;
+      myChart.update();
+    }
+
+    fetchData();
+    setInterval(fetchData, 10000);  // Atualiza a cada 10 segundos
+  </script>
+</body>
+</html>

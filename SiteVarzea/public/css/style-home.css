@@ -2,17 +2,19 @@
 
 body {
   background-image: url(../assets/fundoDash.jpg);
-  box-shadow: #000000;
   background-repeat: no-repeat;
   background-color: #000000;
   background-size: cover;
-  overflow: hidden;
+  height: 80%;
+  padding-bottom: 200px; /* Altura da .container4 + margem superior */
+  overflow-y: auto; /* Adiciona rolagem vertical */
 }
-.container{
+
+.container {
   display: flex;
   background-color: #000000d4;
   color: #fff;
-  width:300px;
+  width: 300px;
   height: 100px;
   border: 6px solid rgb(237, 139, 59);
   border-radius: 30px;
@@ -24,55 +26,24 @@ body {
   justify-content: center;
   flex-direction: column;
 }
-.container1{
+
+.container1, .container2, .container3, .container4,.container5 {
   display: flex;
   background-color: #000000d4;
   color: #fff;
-  width: 500px;
+  width: 600px;
   height: 200px;
   border: 6px solid rgb(237, 139, 59);
   border-radius: 30px;
-  margin-left: 100px;
-  margin-top: 240px;
+  margin: 20px auto; /* Centraliza as divs na tela e adiciona uma margem de 20px */
   font-size: 20px;
   font-family: Arial, sans-serif;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.container2{
-  display: flex;
-  background-color: #000000d4;
-  color: #fff;
-  width:600px;
-  height: 200px;
-  border: 6px solid rgb(237, 139, 59);
-  border-radius: 30px;
-  margin-left: 658px;
-  margin-top: -213px;
-  font-size: 20px;
-  font-family: Arial, sans-serif;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.container3{
-  display: flex;
-  background-color: #000000d4;
-  color: #fff;
-  width:500px;
-  height: 200px;
-  border: 6px solid rgb(237, 139, 59);
-  border-radius: 30px;
-  margin-left: 1300px;
-  margin-top: -213px;
-  font-size: 20px;
-  font-family: Arial, sans-serif;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.button{
+
+.button {
   background-color: #e95e02;
   color: aliceblue;
   font-size: 16px;
@@ -84,6 +55,6 @@ body {
   transition: filter 0.2s;
 }
 
-.button:hover{
+.button:hover {
   filter: brightness(1.5)
 }
