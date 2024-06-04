@@ -94,43 +94,47 @@
 <script>
 
     function cadastrar(){
-        let NomeUSu= input_nome.value
-        let estadousu= input_Estado.value
-        let emailusu= input_email.value
-        let senhausu= input_senha.value
-        let confirmarsenha= confirmacao_senha_input.value
+      let inputs = [
+        { value: input_nome.value, errorMessage: "O nome deve estar preenchido" },
+        { value: input_Estado.value, errorMessage: "O estado deve estar preenchido" },
+        { value: input_email.value, errorMessage: "O email deve estar preenchido" },
+        { value: input_senha.value, errorMessage: "A senha deve estar preenchida" },
+        { value: confirmacao_senha_input.value, errorMessage: "A confirmação da senha deve estar preenchida" }
+    ];
 
-        if(NomeUSu=="" ||
-          estadousu==""||
-          emailusu==""||
-          senhausu=="" ||
-          confirmarsenha== ""
-        ){
-          cardErro.style.display = "flex";
-      mensagem_erro.innerHTML =
-        "(Todos os campos devem estar preenchido)";
-      return false;
+    for (let posicao = 0; posicao < inputs.length; posicao++) {
+        if (inputs[posicao].value == "") {
+            cardErro.style.display = "flex";
+            mensagem_erro.innerHTML = inputs[posicao].errorMessage;
+            return false;
+        }
+    }
+    let NomeUSu = input_nome.value
+    let estadousu = input_Estado.value
+    let emailusu = input_email.value;
+    let senhausu = input_senha.value;
+    let confirmarsenha = confirmacao_senha_input.value;
 
-        }else if(emailusu.indexOf("@")== -1){
-          cardErro.style.display = "flex";
-      mensagem_erro.innerHTML =
-        "(O email deve conter @)";
-      return false;
-
-        }else if(emailusu.indexOf(".com")== -1){
-          cardErro.style.display = "flex";
-      mensagem_erro.innerHTML =
-        "(O email deve conter .com)";
-      return false;}
-      else if(senhausu.length < 6){
+    if (emailusu.indexOf("@") == -1) {
         cardErro.style.display = "flex";
-      mensagem_erro.innerHTML =
-        "(A senha deve conter mais de 6 Digitos)";
-      }else if(confirmarsenha != senhausu){
+        mensagem_erro.innerHTML = "O email deve conter @";
+        return false;
+
+    } else if (emailusu.indexOf(".com") == -1) {
         cardErro.style.display = "flex";
-      mensagem_erro.innerHTML =
-        "(as senhas não coincidem)";
-      }
+        mensagem_erro.innerHTML = "O email deve conter .com";
+        return false;
+
+    } else if (senhausu.length < 6) {
+        cardErro.style.display = "flex";
+        mensagem_erro.innerHTML = "A senha deve conter mais de 6 dígitos";
+        return false;
+
+    } else if (confirmarsenha != senhausu) {
+        cardErro.style.display = "flex";
+        mensagem_erro.innerHTML = "As senhas não coincidem";
+        return false;
+    }
       else {
         function showAlert() {
   document.getElementById("customAlert").style.display = "block";

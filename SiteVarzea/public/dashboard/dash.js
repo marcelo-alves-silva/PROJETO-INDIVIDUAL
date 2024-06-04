@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         new Image(),  // Imagem do Vila São Paulo
         new Image()   // Imagem do Varzea F.C
     ];
-    images[0].src = '../assets/logo.png';  // Ajuste os caminhos das imagens conforme necessário
+    images[0].src = '../assets/logo.png'; 
     images[1].src = '../assets/time3.png';
     images[2].src = '../assets/time2.png';
     images[3].src = '../assets/CYMERA_20160601_103758-removebg-preview.png';
 
-    // Verificar se as imagens estão carregadas corretamente
+  
     images.forEach((img, index) => {
         img.onload = () => {
             console.log(`Imagem ${index + 1} carregada com sucesso!`);
